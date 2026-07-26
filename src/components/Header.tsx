@@ -18,15 +18,13 @@ import {
   Code,
   ArrowRight,
   Download,
-  Globe,
   Sparkles,
   Zap,
-  Layout,
-  Layers,
-  Video,
   BarChart3,
   Newspaper,
   MessageCircle,
+  UserCheck,
+  Layers,
 } from "lucide-react";
 
 const serviceCategories = [
@@ -35,12 +33,12 @@ const serviceCategories = [
     title: "Search Engine Optimization",
     icon: Search,
     links: [
-      { name: "SEO Services", href: "#seo-services" },
-      { name: "Enterprise SEO", href: "#enterprise-seo" },
-      { name: "Ecommerce SEO", href: "#ecommerce-seo" },
-      { name: "Local SEO", href: "#local-seo" },
-      { name: "Technical SEO", href: "#technical-seo" },
-      { name: "SEO Audit", href: "#seo-audit" },
+      { name: "SEO Services", href: "/services/seo" },
+      { name: "Enterprise SEO", href: "/services/enterprise-seo" },
+      { name: "Ecommerce SEO", href: "/services/ecommerce-seo" },
+      { name: "Local SEO", href: "/services/local-seo" },
+      { name: "Technical SEO", href: "/services/technical-seo" },
+      { name: "SEO Audit", href: "/services/seo-audit" },
     ],
   },
   {
@@ -48,11 +46,11 @@ const serviceCategories = [
     title: "Social Media Marketing",
     icon: Share2,
     links: [
-      { name: "Social Media Strategy", href: "#smm-strategy" },
-      { name: "Instagram & Meta Marketing", href: "#meta-smm" },
-      { name: "Content & Reel Creation", href: "#reel-creation" },
-      { name: "Community Management", href: "#community" },
-      { name: "Influencer Marketing", href: "#influencer" },
+      { name: "Social Media Strategy", href: "/services/social-media-strategy" },
+      { name: "Instagram & Meta Marketing", href: "/services/meta-marketing" },
+      { name: "Content & Reel Creation", href: "/services/content-creation" },
+      { name: "Community Management", href: "/services/community-management" },
+      { name: "Influencer Marketing", href: "/services/influencer-marketing" },
     ],
   },
   {
@@ -60,11 +58,11 @@ const serviceCategories = [
     title: "Web Development",
     icon: Code,
     links: [
-      { name: "Custom Website Development", href: "#web-dev" },
-      { name: "Next.js / React Apps", href: "#nextjs-dev" },
-      { name: "WordPress Development", href: "#wordpress" },
-      { name: "E-commerce Stores", href: "#ecommerce-dev" },
-      { name: "UI/UX & Web Design", href: "#uiux-design" },
+      { name: "Custom Website Development", href: "/services/web-development" },
+      { name: "Next.js / React Apps", href: "/services/nextjs-development" },
+      { name: "WordPress Development", href: "/services/wordpress-development" },
+      { name: "E-commerce Stores", href: "/services/ecommerce-development" },
+      { name: "UI/UX & Web Design", href: "/services/ui-ux-design" },
     ],
   },
   {
@@ -72,11 +70,11 @@ const serviceCategories = [
     title: "Performance Marketing",
     icon: TrendingUp,
     links: [
-      { name: "Google Ads (PPC)", href: "#google-ads" },
-      { name: "Meta Ads (Facebook & IG)", href: "#meta-ads" },
-      { name: "LinkedIn Marketing", href: "#linkedin-ads" },
-      { name: "Conversion Rate Optimization", href: "#cro" },
-      { name: "App Install Campaigns", href: "#app-installs" },
+      { name: "Google Ads (PPC)", href: "/services/google-ads" },
+      { name: "Meta Ads (Facebook & IG)", href: "/services/meta-ads" },
+      { name: "LinkedIn Marketing", href: "/services/linkedin-ads" },
+      { name: "Conversion Rate Optimization", href: "/services/cro" },
+      { name: "App Install Campaigns", href: "/services/app-installs" },
     ],
   },
 ];
@@ -103,7 +101,7 @@ export default function Header() {
             <span className="font-semibold text-amber-400">Important Alert:</span>
             <span>We only use official email IDs and never conduct interviews on messaging apps.</span>
             <Link
-              href="#"
+              href="/alert-notice"
               className="font-semibold underline hover:text-amber-300 ml-1"
             >
               Know More
@@ -130,12 +128,13 @@ export default function Header() {
             <Download size={14} className="text-pink-400" />
             <span>Free Digital Audit — Get Your Custom Strategy Today!</span>
           </div>
-          {/* Duplicate content for seamless loop */}
+
+          {/* Duplicate content for seamless marquee loop */}
           <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
             <AlertTriangle size={14} className="text-amber-400 shrink-0" />
             <span className="font-semibold text-amber-400">Important Alert:</span>
             <span>We only use official email IDs and never conduct interviews on messaging apps.</span>
-            <Link href="#" className="font-semibold underline hover:text-amber-300 ml-1">
+            <Link href="/alert-notice" className="font-semibold underline hover:text-amber-300 ml-1">
               Know More
             </Link>
           </div>
@@ -183,12 +182,12 @@ export default function Header() {
             >
               <Mail size={14} /> enquiry@thevikslabs.com
             </a>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="bg-[#006080] hover:bg-[#004e6e] text-white px-6 py-2.5 font-semibold transition-colors rounded-sm"
             >
               Request a Call <ArrowRight size={14} className="inline-block align-[-2px] ml-1" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -196,8 +195,7 @@ export default function Header() {
       {/* Main Navbar */}
       <div className="bg-white border-b border-slate-100 sticky top-0 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[80px] ">
-            
+          <div className="flex justify-between items-center h-[80px]">
             {/* LOGO */}
             <Link href="/" className="flex items-center shrink-0">
               <Image
@@ -212,10 +210,7 @@ export default function Header() {
 
             {/* Desktop Nav - visible at md+ */}
             <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-700">
-              <Link
-                href="/"
-                className="hover:text-[#00a859] transition-colors py-6"
-              >
+              <Link href="/" className="hover:text-[#00a859] transition-colors py-6">
                 Home
               </Link>
 
@@ -230,24 +225,24 @@ export default function Header() {
                 </button>
                 <div className="absolute top-full right-0 w-64 bg-white border border-slate-200 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60] py-2 overflow-hidden origin-top-right">
                   <Link
-                    href="#about"
+                    href="/about"
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
                   >
                     <Building2 size={16} className="text-[#00a859]" />
                     <span>About Us</span>
                   </Link>
                   <Link
-                    href="#team"
+                    href="/team"
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
                   >
                     <Users size={16} className="text-[#00a859]" />
                     <span>Our Team</span>
                   </Link>
                   <Link
-                    href="#founder"
+                    href="/founder"
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
                   >
-                    <Users size={16} className="text-[#00a859]" />
+                    <UserCheck size={16} className="text-[#00a859]" />
                     <span>About Founder</span>
                   </Link>
                 </div>
@@ -255,15 +250,17 @@ export default function Header() {
 
               {/* Our Services Mega Dropdown */}
               <div className="group relative py-6">
-                <button className="hover:text-[#00a859] flex items-center gap-1 transition-colors">
+                <Link
+                  href="/services"
+                  className="hover:text-[#00a859] flex items-center gap-1 transition-colors"
+                >
                   Our Services{" "}
                   <ChevronDown
                     size={14}
                     className="text-slate-400 group-hover:rotate-180 transition-transform duration-200"
                   />
-                </button>
+                </Link>
 
-                {/* Viewport-aware mega menu wrapper */}
                 <div
                   className="absolute top-full right-0 w-[820px] max-w-[calc(100vw-2rem)]
                              bg-white border border-slate-200 shadow-2xl rounded-2xl
@@ -273,7 +270,7 @@ export default function Header() {
                              z-[60] p-5 overflow-hidden origin-top-right"
                 >
                   <div className="flex gap-5">
-                    {/* Left Side: 4 Service Tabs */}
+                    {/* Left Side: Service Category Tabs */}
                     <div className="w-2/5 border-r border-slate-100 pr-4 flex flex-col gap-1.5">
                       {serviceCategories.map((cat) => {
                         const Icon = cat.icon;
@@ -300,7 +297,7 @@ export default function Header() {
                       })}
                     </div>
 
-                    {/* Right Side: Active Category Links + CTA */}
+                    {/* Right Side: Active Service Links */}
                     <div className="w-3/5 bg-slate-50/60 p-5 rounded-xl border border-slate-100 flex flex-col justify-between min-h-[260px]">
                       <div>
                         <h3 className="text-sm font-extrabold text-slate-900 mb-3 pb-2 border-b border-slate-200 flex items-center gap-2">
@@ -334,7 +331,7 @@ export default function Header() {
                           Need custom digital strategies?
                         </span>
                         <Link
-                          href="#contact"
+                          href="/contact"
                           className="shrink-0 text-[11px] font-extrabold text-white bg-gradient-to-r from-[#00a859] to-emerald-700 hover:from-emerald-700 hover:to-[#00a859] px-4 py-2 rounded-full flex items-center gap-1 shadow-sm transition-all"
                         >
                           Talk to Experts <ArrowRight size={12} />
@@ -346,20 +343,20 @@ export default function Header() {
               </div>
 
               <Link
-                href="#blog"
+                href="/blog"
                 className="hover:text-[#00a859] transition-colors py-6 flex items-center gap-1"
               >
                 <Newspaper size={14} className="text-slate-400" /> Blog
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="hover:text-[#00a859] transition-colors py-6 flex items-center gap-1"
               >
                 <MessageCircle size={14} className="text-slate-400" /> Contact
               </Link>
             </nav>
 
-            {/* Mobile Navigation + Quick Contact - visible below md */}
+            {/* Mobile Actions */}
             <div className="md:hidden flex items-center gap-2">
               <a
                 href="tel:+919389958986"
@@ -389,11 +386,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-slate-100 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
-              {/* Quick contact card */}
               <div className="flex flex-col gap-2 p-4 bg-gradient-to-br from-emerald-50 via-white to-sky-50 rounded-2xl mb-3 border border-slate-100">
                 <a
                   href="tel:+919389958986"
@@ -413,8 +409,8 @@ export default function Header() {
                   </span>{" "}
                   enquiry@thevikslabs.com
                 </a>
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     setMobileActiveGroup(null);
@@ -422,7 +418,7 @@ export default function Header() {
                   className="mt-2 text-center bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white px-6 py-3 rounded-full font-extrabold text-sm shadow-md hover:shadow-lg transition-shadow"
                 >
                   Request a Call <ArrowRight size={14} className="inline align-[-3px] ml-1" />
-                </a>
+                </Link>
               </div>
 
               <Link
@@ -436,7 +432,7 @@ export default function Header() {
                 Home
               </Link>
 
-              {/* Mobile Company Group */}
+              {/* Mobile Company Accordion */}
               <div className="rounded-xl overflow-hidden">
                 <button
                   onClick={() => toggleMobileGroup("company")}
@@ -456,7 +452,7 @@ export default function Header() {
                 {mobileActiveGroup === "company" && (
                   <div className="pl-4 pr-2 pb-2 space-y-1 mt-1">
                     <Link
-                      href="#about"
+                      href="/about"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setMobileActiveGroup(null);
@@ -466,7 +462,7 @@ export default function Header() {
                       About Us
                     </Link>
                     <Link
-                      href="#team"
+                      href="/team"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setMobileActiveGroup(null);
@@ -476,7 +472,7 @@ export default function Header() {
                       Our Team
                     </Link>
                     <Link
-                      href="#founder"
+                      href="/founder"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setMobileActiveGroup(null);
@@ -489,7 +485,7 @@ export default function Header() {
                 )}
               </div>
 
-              {/* Mobile Services Group */}
+              {/* Mobile Services Accordion */}
               <div className="rounded-xl overflow-hidden">
                 <button
                   onClick={() => toggleMobileGroup("services")}
@@ -543,7 +539,7 @@ export default function Header() {
               </div>
 
               <Link
-                href="#blog"
+                href="/blog"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setMobileActiveGroup(null);
@@ -555,7 +551,7 @@ export default function Header() {
                 </span>
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setMobileActiveGroup(null);
@@ -567,8 +563,8 @@ export default function Header() {
                 </span>
               </Link>
 
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setMobileActiveGroup(null);
@@ -576,7 +572,7 @@ export default function Header() {
                 className="mt-2 flex items-center justify-center gap-2 px-4 py-4 rounded-2xl bg-gradient-to-r from-[#004e6e] to-[#008c4a] text-white font-extrabold shadow-lg shadow-emerald-500/20 hover:shadow-xl transition-shadow"
               >
                 Get Free Growth Audit <ArrowRight size={17} />
-              </a>
+              </Link>
             </div>
           </div>
         )}

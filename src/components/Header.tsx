@@ -1,104 +1,585 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { AlertTriangle, Phone, Mail, ChevronDown, Briefcase, FileText, MessageSquare, X } from "lucide-react";
+import Image from "next/image";
+import {
+  AlertTriangle,
+  Phone,
+  Mail,
+  ChevronDown,
+  Menu,
+  X,
+  Building2,
+  Users,
+  Search,
+  Share2,
+  TrendingUp,
+  Code,
+  ArrowRight,
+  Download,
+  Globe,
+  Sparkles,
+  Zap,
+  Layout,
+  Layers,
+  Video,
+  BarChart3,
+  Newspaper,
+  MessageCircle,
+} from "lucide-react";
+
+const serviceCategories = [
+  {
+    id: "seo",
+    title: "Search Engine Optimization",
+    icon: Search,
+    links: [
+      { name: "SEO Services", href: "#seo-services" },
+      { name: "Enterprise SEO", href: "#enterprise-seo" },
+      { name: "Ecommerce SEO", href: "#ecommerce-seo" },
+      { name: "Local SEO", href: "#local-seo" },
+      { name: "Technical SEO", href: "#technical-seo" },
+      { name: "SEO Audit", href: "#seo-audit" },
+    ],
+  },
+  {
+    id: "smm",
+    title: "Social Media Marketing",
+    icon: Share2,
+    links: [
+      { name: "Social Media Strategy", href: "#smm-strategy" },
+      { name: "Instagram & Meta Marketing", href: "#meta-smm" },
+      { name: "Content & Reel Creation", href: "#reel-creation" },
+      { name: "Community Management", href: "#community" },
+      { name: "Influencer Marketing", href: "#influencer" },
+    ],
+  },
+  {
+    id: "web-dev",
+    title: "Web Development",
+    icon: Code,
+    links: [
+      { name: "Custom Website Development", href: "#web-dev" },
+      { name: "Next.js / React Apps", href: "#nextjs-dev" },
+      { name: "WordPress Development", href: "#wordpress" },
+      { name: "E-commerce Stores", href: "#ecommerce-dev" },
+      { name: "UI/UX & Web Design", href: "#uiux-design" },
+    ],
+  },
+  {
+    id: "performance-marketing",
+    title: "Performance Marketing",
+    icon: TrendingUp,
+    links: [
+      { name: "Google Ads (PPC)", href: "#google-ads" },
+      { name: "Meta Ads (Facebook & IG)", href: "#meta-ads" },
+      { name: "LinkedIn Marketing", href: "#linkedin-ads" },
+      { name: "Conversion Rate Optimization", href: "#cro" },
+      { name: "App Install Campaigns", href: "#app-installs" },
+    ],
+  },
+];
 
 export default function Header() {
-  return (
-    <header className="w-full relative z-50">
-      {/* Dark Blue Alert Bar */}
-      <div className="bg-[#122b5e] text-white text-xs py-2 px-4 flex justify-center items-center gap-4">
-        <div className="flex items-center gap-2 max-w-7xl mx-auto">
-          <AlertTriangle size={14} className="text-yellow-500" />
-          <span className="font-semibold">Important Alert:</span>
-          <span className="hidden sm:inline">We only use official email IDs and never conduct interviews on messaging apps. Beware of fake job offers and payment requests.</span>
-          <Link href="#" className="font-semibold underline ml-2">Know More</Link>
-          <button className="ml-4 hover:opacity-80"><X size={14} /></button>
-        </div>
-      </div>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileActiveGroup, setMobileActiveGroup] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("seo");
 
-      {/* Top Contact Bar */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 flex justify-end items-center text-xs text-gray-600">
-          <div className="flex items-center gap-6">
-            <a href="tel:+919910308266" className="flex items-center gap-2 hover:text-[#00a859] transition-colors py-2">
-              <Phone size={14} /> +91-9910308266
-            </a>
-            <a href="mailto:enquiry@techmagnate.com" className="flex items-center gap-2 hover:text-[#00a859] transition-colors py-2">
-              <Mail size={14} /> enquiry@techmagnate.com
-            </a>
-            <Link href="#" className="bg-[#006080] hover:bg-[#004e6e] text-white px-6 py-2.5 font-medium transition-colors">
-              Request a Call &rarr;
+  const toggleMobileGroup = (key: string) => {
+    setMobileActiveGroup(mobileActiveGroup === key ? null : key);
+  };
+
+  const currentTabContent =
+    serviceCategories.find((cat) => cat.id === activeTab) || serviceCategories[0];
+
+  return (
+    <header className="w-full relative z-50 font-sans text-slate-800">
+      {/* Top Alert Marquee Bar */}
+      <div className="bg-[#102a5c] text-white text-xs py-2 px-4 relative overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee items-center gap-10">
+          <div className="flex items-center gap-2 shrink-0">
+            <AlertTriangle size={14} className="text-amber-400 shrink-0" />
+            <span className="font-semibold text-amber-400">Important Alert:</span>
+            <span>We only use official email IDs and never conduct interviews on messaging apps.</span>
+            <Link
+              href="#"
+              className="font-semibold underline hover:text-amber-300 ml-1"
+            >
+              Know More
             </Link>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-emerald-400 font-bold">★</span>
+            <span className="font-semibold">#1 Digital Marketing Agency</span>
+            <span>— 15+ Years of Digital Domination</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Zap size={14} className="text-yellow-400" />
+            <span>1.29M+ Paid Conversions Delivered This Year</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <BarChart3 size={14} className="text-sky-400" />
+            <span>Google Premier Partner &amp; Meta Business Partner</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Sparkles size={14} className="text-orange-400" />
+            <span>103+ Brands Trust Us With Their Marketing Budget</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Download size={14} className="text-pink-400" />
+            <span>Free Digital Audit — Get Your Custom Strategy Today!</span>
+          </div>
+          {/* Duplicate content for seamless loop */}
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <AlertTriangle size={14} className="text-amber-400 shrink-0" />
+            <span className="font-semibold text-amber-400">Important Alert:</span>
+            <span>We only use official email IDs and never conduct interviews on messaging apps.</span>
+            <Link href="#" className="font-semibold underline hover:text-amber-300 ml-1">
+              Know More
+            </Link>
+          </div>
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <span className="text-emerald-400 font-bold">★</span>
+            <span className="font-semibold">#1 Digital Marketing Agency</span>
+            <span>— 15+ Years of Digital Domination</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <Zap size={14} className="text-yellow-400" />
+            <span>1.29M+ Paid Conversions Delivered This Year</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <BarChart3 size={14} className="text-sky-400" />
+            <span>Google Premier Partner &amp; Meta Business Partner</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <Sparkles size={14} className="text-orange-400" />
+            <span>103+ Brands Trust Us With Their Marketing Budget</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0" aria-hidden="true">
+            <Download size={14} className="text-pink-400" />
+            <span>Free Digital Audit — Get Your Custom Strategy Today!</span>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <Link href="/" className="flex flex-col">
-              <div className="flex items-center">
-                <span className="text-3xl font-black text-[#00a859]">TECHMAGNATE</span>
-                <span className="text-[10px] align-top ml-1 text-gray-500">&reg;</span>
-              </div>
-              <span className="text-[11px] tracking-[0.2em] text-gray-600 font-medium">Digital Excellence</span>
+      {/* Secondary Contact Bar */}
+      <div className="hidden md:block bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs text-slate-600">
+          <div className="flex items-center gap-2">
+            <Download size={14} className="text-[#00a859]" />
+            <span className="font-semibold">Download Digital Growth Report &amp; Case Studies</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <a
+              href="tel:+919389958986"
+              className="flex items-center gap-1.5 hover:text-[#00a859] transition-colors py-2.5"
+            >
+              <Phone size={14} /> +91-9389958986
+            </a>
+            <a
+              href="mailto:enquiry@thevikslabs.com"
+              className="flex items-center gap-1.5 hover:text-[#00a859] transition-colors py-2.5"
+            >
+              <Mail size={14} /> enquiry@thevikslabs.com
+            </a>
+            <a
+              href="#contact"
+              className="bg-[#006080] hover:bg-[#004e6e] text-white px-6 py-2.5 font-semibold transition-colors rounded-sm"
+            >
+              Request a Call <ArrowRight size={14} className="inline-block align-[-2px] ml-1" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navbar */}
+      <div className="bg-white border-b border-slate-100 sticky top-0 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-[80px] ">
+            
+            {/* LOGO */}
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/logo-dark.png"
+                alt="The Viks Labs Logo"
+                width={180}
+                height={50}
+                className="h-16 w-auto object-contain"
+                priority
+              />
             </Link>
 
-            {/* Nav Links */}
-            <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-700 relative">
-              <Link href="#" className="hover:text-[#00a859] flex items-center gap-1 transition-colors">Company <ChevronDown size={14} className="text-gray-400"/></Link>
-              <Link href="#" className="hover:text-[#00a859] flex items-center gap-1 transition-colors">Our Services <ChevronDown size={14} className="text-gray-400"/></Link>
-              
-              {/* Mega Menu Trigger */}
-              <div className="group py-6">
-                <Link href="#" className="text-[#00a859] flex items-center gap-1 border-b-2 border-[#00a859] pb-1">
-                  Our Work <ChevronDown size={14} />
-                </Link>
+            {/* Desktop Nav - visible at md+ */}
+            <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-700">
+              <Link
+                href="/"
+                className="hover:text-[#00a859] transition-colors py-6"
+              >
+                Home
+              </Link>
 
-                {/* Mega Menu Dropdown */}
-                <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[700px] bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100 flex p-8 z-50 pointer-events-none group-hover:pointer-events-auto">
-                  
-                  {/* Left Column Links */}
-                  <div className="flex-1 flex flex-col gap-6 pr-8 border-r border-gray-100">
-                    <Link href="#" className="flex items-center gap-4 text-gray-700 hover:text-[#00a859] transition-colors group/link">
-                      <Briefcase className="text-[#00a859] group-hover/link:scale-110 transition-transform" />
-                      <span className="font-semibold">Portfolio</span>
-                    </Link>
-                    <Link href="#" className="flex items-center gap-4 text-gray-700 hover:text-[#00a859] transition-colors group/link">
-                      <MessageSquare className="text-[#00a859] group-hover/link:scale-110 transition-transform" />
-                      <span className="font-semibold">Testimonials</span>
-                    </Link>
-                    <Link href="#" className="flex items-center gap-4 text-gray-700 hover:text-[#00a859] transition-colors group/link">
-                      <FileText className="text-[#00a859] group-hover/link:scale-110 transition-transform" />
-                      <span className="font-semibold">Case Studies</span>
-                    </Link>
-                  </div>
-
-                  {/* Right Column Promo Card */}
-                  <div className="flex-[1.2] bg-[#f0f9ff] rounded-xl p-8 flex flex-col justify-center relative overflow-hidden ml-8">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-20 rounded-full blur-2xl -mr-10 -mt-10"></div>
-                    <span className="text-[10px] font-bold text-gray-500 tracking-wider mb-2">NEW - FY 2025-26 DIGITAL REPORT CARD</span>
-                    <div className="text-6xl font-black text-[#6db33f] tracking-tighter mb-2">1.29M</div>
-                    <p className="text-sm font-semibold text-gray-700 mb-1">Paid conversions this year.</p>
-                    <p className="text-xs text-gray-500 mb-6">Real data from 103 brands.</p>
-                    <button className="bg-[#f97316] hover:bg-[#ea580c] text-white px-6 py-3 rounded-full font-bold text-sm w-full transition-colors shadow-lg shadow-orange-500/30">
-                      Download Report Card &rarr;
-                    </button>
-                    <p className="text-[10px] text-right text-gray-400 mt-3">Google Premier Partner</p>
-                  </div>
-
+              {/* Company Dropdown */}
+              <div className="group relative py-6">
+                <button className="hover:text-[#00a859] flex items-center gap-1 transition-colors">
+                  Company{" "}
+                  <ChevronDown
+                    size={14}
+                    className="text-slate-400 group-hover:rotate-180 transition-transform duration-200"
+                  />
+                </button>
+                <div className="absolute top-full right-0 w-64 bg-white border border-slate-200 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60] py-2 overflow-hidden origin-top-right">
+                  <Link
+                    href="#about"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
+                  >
+                    <Building2 size={16} className="text-[#00a859]" />
+                    <span>About Us</span>
+                  </Link>
+                  <Link
+                    href="#team"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
+                  >
+                    <Users size={16} className="text-[#00a859]" />
+                    <span>Our Team</span>
+                  </Link>
+                  <Link
+                    href="#founder"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#00a859] text-sm"
+                  >
+                    <Users size={16} className="text-[#00a859]" />
+                    <span>About Founder</span>
+                  </Link>
                 </div>
               </div>
 
-              <Link href="#" className="hover:text-[#00a859] flex items-center gap-1 transition-colors">Industry <ChevronDown size={14} className="text-gray-400"/></Link>
-              <Link href="#" className="hover:text-[#00a859] flex items-center gap-1 transition-colors">Insights <ChevronDown size={14} className="text-gray-400"/></Link>
-              <Link href="#" className="hover:text-[#00a859] transition-colors">Blog</Link>
-              <Link href="#" className="hover:text-[#00a859] transition-colors">Contact</Link>
+              {/* Our Services Mega Dropdown */}
+              <div className="group relative py-6">
+                <button className="hover:text-[#00a859] flex items-center gap-1 transition-colors">
+                  Our Services{" "}
+                  <ChevronDown
+                    size={14}
+                    className="text-slate-400 group-hover:rotate-180 transition-transform duration-200"
+                  />
+                </button>
+
+                {/* Viewport-aware mega menu wrapper */}
+                <div
+                  className="absolute top-full right-0 w-[820px] max-w-[calc(100vw-2rem)]
+                             bg-white border border-slate-200 shadow-2xl rounded-2xl
+                             opacity-0 invisible
+                             group-hover:opacity-100 group-hover:visible
+                             transition-all duration-200
+                             z-[60] p-5 overflow-hidden origin-top-right"
+                >
+                  <div className="flex gap-5">
+                    {/* Left Side: 4 Service Tabs */}
+                    <div className="w-2/5 border-r border-slate-100 pr-4 flex flex-col gap-1.5">
+                      {serviceCategories.map((cat) => {
+                        const Icon = cat.icon;
+                        const isActive = activeTab === cat.id;
+                        return (
+                          <button
+                            key={cat.id}
+                            onMouseEnter={() => setActiveTab(cat.id)}
+                            className={`flex items-center gap-3 w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                              isActive
+                                ? "bg-emerald-50/80 text-[#00a859] shadow-sm border border-emerald-100"
+                                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            }`}
+                          >
+                            <Icon
+                              size={16}
+                              className={`shrink-0 ${
+                                isActive ? "text-[#00a859]" : "text-slate-400"
+                              }`}
+                            />
+                            <span className="flex-1 leading-tight">{cat.title}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Right Side: Active Category Links + CTA */}
+                    <div className="w-3/5 bg-slate-50/60 p-5 rounded-xl border border-slate-100 flex flex-col justify-between min-h-[260px]">
+                      <div>
+                        <h3 className="text-sm font-extrabold text-slate-900 mb-3 pb-2 border-b border-slate-200 flex items-center gap-2">
+                          {(() => {
+                            const Icon = currentTabContent.icon;
+                            return (
+                              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00a859] to-emerald-700 flex items-center justify-center text-white shrink-0">
+                                <Icon size={15} />
+                              </span>
+                            );
+                          })()}
+                          {currentTabContent.title}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                          {currentTabContent.links.map((link, idx) => (
+                            <Link
+                              key={idx}
+                              href={link.href}
+                              className="text-xs text-slate-600 hover:text-[#00a859] hover:font-bold py-1.5 flex items-center gap-1.5 rounded-md hover:bg-white hover:px-1.5 -mx-1.5 transition-all"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#00a859] shrink-0" />
+                              {link.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA Banner */}
+                      <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between gap-3">
+                        <span className="text-[11px] font-medium text-slate-500 leading-snug">
+                          Need custom digital strategies?
+                        </span>
+                        <Link
+                          href="#contact"
+                          className="shrink-0 text-[11px] font-extrabold text-white bg-gradient-to-r from-[#00a859] to-emerald-700 hover:from-emerald-700 hover:to-[#00a859] px-4 py-2 rounded-full flex items-center gap-1 shadow-sm transition-all"
+                        >
+                          Talk to Experts <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="#blog"
+                className="hover:text-[#00a859] transition-colors py-6 flex items-center gap-1"
+              >
+                <Newspaper size={14} className="text-slate-400" /> Blog
+              </Link>
+              <Link
+                href="#contact"
+                className="hover:text-[#00a859] transition-colors py-6 flex items-center gap-1"
+              >
+                <MessageCircle size={14} className="text-slate-400" /> Contact
+              </Link>
             </nav>
+
+            {/* Mobile Navigation + Quick Contact - visible below md */}
+            <div className="md:hidden flex items-center gap-2">
+              <a
+                href="tel:+919389958986"
+                className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-[#00a859] hover:bg-emerald-100 transition-colors"
+                aria-label="Call +91-9389958986"
+              >
+                <Phone size={18} />
+              </a>
+              <a
+                href="mailto:enquiry@thevikslabs.com"
+                className="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-600 hover:bg-sky-100 transition-colors hidden sm:flex"
+                aria-label="Email enquiry@thevikslabs.com"
+              >
+                <Mail size={18} />
+              </a>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(!mobileMenuOpen);
+                  setMobileActiveGroup(null);
+                }}
+                className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#004e6e] to-[#008c4a] flex items-center justify-center text-white shadow-lg shadow-emerald-500/20"
+                aria-label="Toggle Menu"
+              >
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-100 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
+              {/* Quick contact card */}
+              <div className="flex flex-col gap-2 p-4 bg-gradient-to-br from-emerald-50 via-white to-sky-50 rounded-2xl mb-3 border border-slate-100">
+                <a
+                  href="tel:+919389958986"
+                  className="flex items-center gap-3 text-[#004e6e] font-bold text-sm"
+                >
+                  <span className="w-9 h-9 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-[#00a859]">
+                    <Phone size={16} />
+                  </span>{" "}
+                  +91-9389958986
+                </a>
+                <a
+                  href="mailto:enquiry@thevikslabs.com"
+                  className="flex items-center gap-3 text-[#004e6e] font-bold text-sm"
+                >
+                  <span className="w-9 h-9 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-sky-600">
+                    <Mail size={16} />
+                  </span>{" "}
+                  enquiry@thevikslabs.com
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setMobileActiveGroup(null);
+                  }}
+                  className="mt-2 text-center bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white px-6 py-3 rounded-full font-extrabold text-sm shadow-md hover:shadow-lg transition-shadow"
+                >
+                  Request a Call <ArrowRight size={14} className="inline align-[-3px] ml-1" />
+                </a>
+              </div>
+
+              <Link
+                href="/"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileActiveGroup(null);
+                }}
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#00a859] transition-colors"
+              >
+                Home
+              </Link>
+
+              {/* Mobile Company Group */}
+              <div className="rounded-xl overflow-hidden">
+                <button
+                  onClick={() => toggleMobileGroup("company")}
+                  className="w-full flex justify-between items-center px-4 py-3.5 rounded-xl font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#00a859] transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Building2 size={16} className="text-[#00a859]" />
+                    Company
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-200 text-slate-400 ${
+                      mobileActiveGroup === "company" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileActiveGroup === "company" && (
+                  <div className="pl-4 pr-2 pb-2 space-y-1 mt-1">
+                    <Link
+                      href="#about"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileActiveGroup(null);
+                      }}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-[#00a859] font-semibold text-sm"
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="#team"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileActiveGroup(null);
+                      }}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-[#00a859] font-semibold text-sm"
+                    >
+                      Our Team
+                    </Link>
+                    <Link
+                      href="#founder"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileActiveGroup(null);
+                      }}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-[#00a859] font-semibold text-sm"
+                    >
+                      About Founder
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Mobile Services Group */}
+              <div className="rounded-xl overflow-hidden">
+                <button
+                  onClick={() => toggleMobileGroup("services")}
+                  className="w-full flex justify-between items-center px-4 py-3.5 rounded-xl font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#00a859] transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Layers size={16} className="text-[#00a859]" />
+                    Our Services
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-200 text-slate-400 ${
+                      mobileActiveGroup === "services" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileActiveGroup === "services" && (
+                  <div className="pl-3 pr-2 pb-2 space-y-3 mt-1">
+                    {serviceCategories.map((cat) => (
+                      <div
+                        key={cat.id}
+                        className="bg-slate-50 rounded-xl p-4 border border-slate-100"
+                      >
+                        <div className="flex items-center gap-2 mb-2 pb-2 border-b border-slate-200">
+                          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00a859] to-emerald-700 flex items-center justify-center text-white">
+                            <cat.icon size={15} />
+                          </span>
+                          <span className="text-xs font-extrabold text-slate-900">
+                            {cat.title}
+                          </span>
+                        </div>
+                        <div className="space-y-1 pl-10">
+                          {cat.links.map((link, idx) => (
+                            <Link
+                              key={idx}
+                              href={link.href}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                                setMobileActiveGroup(null);
+                              }}
+                              className="block text-xs text-slate-600 hover:text-[#00a859] hover:font-bold py-1.5 pl-2 border-l-2 border-slate-200 hover:border-[#00a859] transition-all"
+                            >
+                              {link.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="#blog"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileActiveGroup(null);
+                }}
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#00a859] transition-colors"
+              >
+                <span className="flex items-center gap-2">
+                  <Newspaper size={16} className="text-[#00a859]" /> Blog
+                </span>
+              </Link>
+              <Link
+                href="#contact"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileActiveGroup(null);
+                }}
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#00a859] transition-colors"
+              >
+                <span className="flex items-center gap-2">
+                  <MessageCircle size={16} className="text-[#00a859]" /> Contact
+                </span>
+              </Link>
+
+              <a
+                href="#contact"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileActiveGroup(null);
+                }}
+                className="mt-2 flex items-center justify-center gap-2 px-4 py-4 rounded-2xl bg-gradient-to-r from-[#004e6e] to-[#008c4a] text-white font-extrabold shadow-lg shadow-emerald-500/20 hover:shadow-xl transition-shadow"
+              >
+                Get Free Growth Audit <ArrowRight size={17} />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -1,133 +1,167 @@
 "use client";
 
-import React, { useState } from "react";
-import { Globe, MousePointerClick, Target, Users, BarChart3, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import { 
+  TrendingUp, 
+  Share2, 
+  Code, 
+  Target, 
+  BarChart3, 
+  ArrowRight,
+  Sparkles,
+  Zap,
+  Layout,
+  Layers
+} from "lucide-react";
 
-// Cards data
-const cardsData = [
+// Updated Capability Cards for Performance, SMM & Web Dev
+const capabilities = [
   {
     id: 1,
-    icon: <Users size={24} />,
-    title: "Dedicated Teams for AI, Automation, and Data Analytics",
-    description: "Our specialized teams use AI, automation, and analytics to augment campaign performance, improve customer engagement, and unlock new growth opportunities."
+    icon: <TrendingUp className="w-5 h-5 text-emerald-600" />,
+    title: "Performance Ads (PPC & Meta)",
+    description: "Data-driven Google, Meta & LinkedIn campaigns focused on lowering acquisition costs and maximizing ROAS."
   },
   {
     id: 2,
-    icon: <BarChart3 size={24} />,
-    title: "In-House Martech Capabilities",
-    description: "Our in-house expertise in CRM, AI, analytics, and marketing automation empowers businesses with data-driven, personalized marketing solutions that drive efficiency and ROI."
+    icon: <Share2 className="w-5 h-5 text-sky-600" />,
+    title: "Social Media Strategy",
+    description: "Engaging short-form reels, creative content, and active community management to build loyal audiences."
   },
   {
     id: 3,
-    icon: <Award size={24} />,
-    title: "Google Premier Agency",
-    description: "As a Google Premier Partner, we have exclusive access to insights, tools, and support to help us deliver superior campaign performance."
+    icon: <Code className="w-5 h-5 text-indigo-600" />,
+    title: "Conversion Web Development",
+    description: "Fast, custom-coded Next.js, React, or Webflow sites optimized for mobile speed and maximum lead conversion."
+  },
+  {
+    id: 4,
+    icon: <Layers className="w-5 h-5 text-purple-600" />,
+    title: "Full-Funnel Growth Strategy",
+    description: "End-to-end integration connecting paid traffic directly into your CRM, web funnel, and retargeting ads."
+  }
+];
+
+// Clean Growth Pillars
+const growthPillars = [
+  {
+    icon: <Target className="w-4 h-4 text-emerald-600" />,
+    label: "Target",
+    sub: "Paid Ads & Social",
+  },
+  {
+    icon: <Layout className="w-4 h-4 text-sky-600" />,
+    label: "Convert",
+    sub: "Custom Web Builds",
+  },
+  {
+    icon: <Zap className="w-4 h-4 text-amber-600" />,
+    label: "Scale",
+    sub: "Predictable ROAS",
   }
 ];
 
 export default function TrafficIncrease() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % cardsData.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
-  };
-
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-[#f0fdf4] to-[#ecfeff]">
-      {/* Background Pattern using an online texture + CSS gradient */}
-      <div 
-        className="absolute inset-0 z-0 opacity-30"
-        style={{ 
-          backgroundImage: `url('https://www.transparenttextures.com/patterns/cream-paper.png')`,
-          backgroundSize: 'auto'
-        }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+    <section className="relative py-12 lg:py-16 overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#f0fdf4]/50 to-[#f0f9ff]">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-emerald-200/20 blur-3xl" />
+        <div className="absolute top-1/2 -right-24 w-96 h-96 rounded-full bg-sky-200/20 blur-3xl" />
         
-        {/* Left Column */}
-        <div className="flex-1">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight font-heading">
-            Achieve a 2x Increase in Average Monthly Traffic
-          </h2>
+        {/* Subtle Grid Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.5]"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, #0f766e 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+      </div>
 
-          <div className="grid grid-cols-2 gap-y-8 gap-x-4 mb-12">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-2xl font-bold text-gray-900">
-                <Globe className="text-[#006080]" size={28} />
-                Get
-              </div>
-              <p className="text-gray-600 text-sm">SERP Visibility</p>
-            </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* LEFT COLUMN: Stat, Value Prop & CTA */}
+          <div className="lg:col-span-5 flex flex-col items-start">
             
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-2xl font-bold text-gray-900">
-                <MousePointerClick className="text-[#006080]" size={28} />
-                Drive
-              </div>
-              <p className="text-gray-600 text-sm">Qualified Leads</p>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 shadow-xs mb-6">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs font-bold tracking-wider uppercase text-emerald-800">
+                Proven Growth Engine
+              </span>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-2xl font-bold text-gray-900">
-                <Target className="text-[#006080]" size={28} />
-                Grow
+            {/* Stat & Headline */}
+            <div className="mb-6">
+              <div className="flex items-baseline gap-3 mb-2">
+                <span className="text-6xl sm:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-600 via-teal-700 to-sky-700 bg-clip-text text-transparent">
+                  3.8x
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug tracking-tight">
+                  Average Return on Ad Spend (ROAS)
+                </h2>
               </div>
-              <p className="text-gray-600 text-sm">Your Bottomline</p>
+              <p className="text-gray-600 text-base leading-relaxed">
+                We combine performance marketing, engaging social media, and high-converting website design into an integrated growth engine that scales your business.
+              </p>
             </div>
-          </div>
 
-          <button className="bg-[#f97316] hover:bg-[#ea580c] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2 group">
-            Speak to an Expert 
-            <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </button>
-        </div>
-
-        {/* Right Column - Cards Carousel */}
-        <div className="flex-[1.5] relative w-full">
-          
-          {/* Custom Arrows */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#006080] z-20 transition-colors cursor-pointer"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-[#006080] z-20 transition-colors cursor-pointer"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          <div className="flex gap-6 overflow-hidden px-4 py-8 -mx-4">
-            {/* Display current card and next card for sliding effect */}
-            {[currentIndex, (currentIndex + 1) % cardsData.length, (currentIndex + 2) % cardsData.length].map((index, idx) => (
-              <div 
-                key={cardsData[index].id}
-                className={`min-w-[280px] bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 flex-shrink-0 transform transition-all duration-500 hover:-translate-y-2 ${
-                  idx === 0 ? 'opacity-100' : idx === 1 ? 'opacity-100' : 'opacity-50'
-                }`}
-              >
-                <div className="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mb-6 text-gray-700">
-                  {cardsData[index].icon}
+            {/* Growth Pillars Row */}
+            <div className="w-full grid grid-cols-3 gap-2 p-2 bg-white/80 backdrop-blur-md rounded-2xl border border-gray-100 shadow-xs mb-8">
+              {growthPillars.map((p, i) => (
+                <div key={i} className="flex flex-col items-center text-center p-2 rounded-xl hover:bg-gray-50/80 transition-colors">
+                  <div className="mb-1 p-1.5 rounded-lg bg-gray-50 border border-gray-100">
+                    {p.icon}
+                  </div>
+                  <span className="text-xs font-bold text-gray-900">{p.label}</span>
+                  <span className="text-[11px] text-gray-500 font-medium truncate w-full">{p.sub}</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-4 font-heading leading-snug">
-                  {cardsData[index].title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {cardsData[index].description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
 
+            {/* CTA & Trust */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full">
+              <a 
+                href="#contact" 
+                className="group relative bg-gray-900 hover:bg-emerald-600 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-emerald-500/20 flex items-center justify-center gap-2"
+              >
+                <span>Book a Growth Audit</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+              
+              <div className="flex items-center gap-2 justify-center sm:justify-start text-xs text-gray-500">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Trusted by <b>150+</b> growing brands</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: 2x2 Feature Grid */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {capabilities.map((item) => (
+                <div
+                  key={item.id}
+                  className="group relative bg-white/90 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 group-hover:bg-emerald-50 flex items-center justify-center mb-4 transition-colors">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

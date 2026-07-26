@@ -14,10 +14,8 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f8f9fa] text-gray-900 font-sans">
-      <Header />
       <Hero />
       <ServicesBar />
-      
       <TrafficIncrease />
       <DigitalReportCard />
       <ClientsGrid />
@@ -26,7 +24,6 @@ export default function Home() {
       <FAQ />
       <Contact />
       
-      <Footer />
     </main>
   );
 }

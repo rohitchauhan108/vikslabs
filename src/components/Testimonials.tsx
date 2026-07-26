@@ -10,7 +10,7 @@ const testimonialsData = [
     company: "Bajaj Finserv",
     companyInitial: "B",
     companyColor: "#005cb9",
-    text: "Techmagnate has delivered on its promise of significant growth. Recently, we reached an impressive milestone...",
+    text: "The Viklabs has delivered on its promise of significant growth. Recently, we reached an impressive milestone...",
     name: "Rohit Singh Chouhan",
     role: "Senior Unit Manager - Bajaj: Online Payment (BBPS)"
   },
@@ -19,7 +19,7 @@ const testimonialsData = [
     company: "Muthoot Finance",
     companyInitial: "M",
     companyColor: "#dc2626",
-    text: "The digital marketing strategies implemented by Techmagnate have been game-changing for our brand visibility.",
+    text: "The digital marketing strategies implemented by The Viklabs have been game-changing for our brand visibility.",
     name: "Anita Sharma",
     role: "Marketing Director - Muthoot Finance"
   },

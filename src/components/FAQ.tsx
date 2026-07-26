@@ -3,159 +3,175 @@
 import React, { useState } from "react";
 import { ChevronRight, ChevronDown, ChevronLeft } from "lucide-react";
 
-// FAQ categories and data
+// Updated categories aligned with Performance Marketing, SMM, and Web Dev
 const faqCategories = [
-  { id: "seo", name: "SEO Services" },
-  { id: "ppc", name: "PPC and Paid Advertising" },
+  { id: "performance", name: "Performance Marketing" },
   { id: "social", name: "Social Media Marketing" },
-  { id: "content", name: "Content Marketing" },
-  { id: "aso", name: "ASO (App Store Optimization)" },
-  { id: "martech", name: "Martech Services" },
-  { id: "process", name: "Process-Related" },
+  { id: "webdev", name: "Website Development" },
+  { id: "seo", name: "SEO & Growth" },
+  { id: "process", name: "Pricing & Onboarding" },
 ];
 
 const faqData = {
-  seo: [
+  performance: [
     {
       id: 1,
-      question: "Which SEO agency in India can help my brand rank in Google AI Mode?",
-      answer: "Techmagnate is a specialist Google AI Mode SEO agency with a proven track record of helping brands get cited in AI-generated overviews and summaries. Our process covers everything from semantic content structuring and schema markup to E-E-A-T building and passage-level optimization – the exact signals Google AI Mode uses to decide which brands to feature and trust."
+      question: "How do your performance marketing campaigns ensure a positive ROI?",
+      answer: "We focus on data-driven targeting across Google Ads, Meta Ads (Instagram & Facebook), and LinkedIn. By constantly testing ad creative, refining audience segmentation, and optimizing landing pages, we focus purely on cost-per-acquisition (CPA) and return on ad spend (ROAS)."
     },
     {
       id: 2,
-      question: "What can Techmagnate SEO service do for my business in Kolkata?",
-      answer: "Techmagnate's Kolkata SEO services can boost your local and national visibility, drive targeted organic traffic, improve rankings for key search terms, enhance user experience, and increase conversions through data-driven strategies tailored to your business goals and local market in Kolkata."
+      question: "Which ad platforms do you specialize in?",
+      answer: "We manage campaigns across Google Search/Shopping/Display, Meta Ads (Facebook & Instagram), LinkedIn, TikTok, and Retargeting networks depending on where your high-intent audience spends their time."
     },
     {
       id: 3,
-      question: "How does Techmagnate's SEO strategy differ from other agencies in Delhi?",
-      answer: "Techmagnate's Delhi SEO strategy focuses on holistic, sustainable growth combining technical SEO, content excellence, AI optimization, and data analytics, with transparent reporting and a dedicated team aligned to your business objectives."
-    },
-    {
-      id: 4,
-      question: "Does Techmagnate offer AI-driven or LLM-optimized SEO solutions?",
-      answer: "Yes! We are at the forefront of AI and LLM optimization, helping brands maximize visibility in Google AI Overviews and other AI-powered search experiences through specialized content structuring, schema, and E-E-A-T strategies."
+      question: "What is the minimum budget required for performance ads?",
+      answer: "While we tailor campaign structures to your scale, we recommend a minimum ad spend that allows for sufficient data collection and A/B testing to achieve reliable conversion optimization."
     }
   ],
-  ppc: [
-    { id: 1, question: "What PPC services do you offer?", answer: "We offer comprehensive PPC services including Google Ads, Facebook/Instagram Ads, LinkedIn Ads, programmatic advertising, and remarketing campaigns, all optimized for maximum ROI." },
-    { id: 2, question: "How do you optimize ad campaigns?", answer: "Our optimization process includes A/B testing, keyword refinement, audience targeting adjustments, bid management, and continuous performance analysis to ensure your campaigns deliver the best possible results." }
-  ],
   social: [
-    { id: 1, question: "Which social platforms do you manage?", answer: "We manage all major social platforms including Facebook, Instagram, LinkedIn, Twitter/X, YouTube, and Pinterest with platform-specific strategies tailored to your audience." },
-    { id: 2, question: "Do you handle social media advertising?", answer: "Yes, we provide end-to-end social media advertising services from creative development to campaign management and performance reporting." }
+    {
+      id: 1,
+      question: "What is included in your Social Media Marketing (SMM) services?",
+      answer: "Our SMM services cover complete social strategy, creative content production (reels, graphics, copy), community management, influencer partnerships, and organic audience growth across Instagram, LinkedIn, Facebook, and Twitter/X."
+    },
+    {
+      id: 2,
+      question: "Do you handle content creation and short-form video (Reels/Shorts)?",
+      answer: "Yes! Our in-house team handles copy, visual design, and video editing for short-form video content designed specifically to build brand loyalty and maximize platform engagement."
+    },
+    {
+      id: 3,
+      question: "How do you measure social media marketing success?",
+      answer: "We track key performance metrics including engagement rate, reach, brand sentiment, website referral traffic, and social-assisted conversions."
+    }
   ],
-  content: [
-    { id: 1, question: "What content services do you provide?", answer: "We offer blog writing, article creation, website copy, social media content, email marketing content, whitepapers, case studies, and more, all optimized for SEO and engagement." },
-    { id: 2, question: "Do you have native English writers?", answer: "Yes, our team includes native English writers with expertise in various industries, ensuring high-quality, engaging, and grammatically correct content." }
+  webdev: [
+    {
+      id: 1,
+      question: "What technology stack do you use for website development?",
+      answer: "We build fast, secure, modern websites using React, Next.js, Webflow, WordPress, or Shopify, depending on your business requirements, scalability needs, and content management preferences."
+    },
+    {
+      id: 2,
+      question: "Are your custom websites optimized for mobile and speed?",
+      answer: "100%. Every website we build is fully responsive, optimized for fast loading speeds, built with Core Web Vitals in mind, and structured for high conversion rates."
+    },
+    {
+      id: 3,
+      question: "Will I be able to update content on the website myself?",
+      answer: "Yes, we integrate easy-to-use CMS options and provide full documentation and video walkthroughs so your team can easily update text, images, and blog posts without coding."
+    }
   ],
-  aso: [
-    { id: 1, question: "What is ASO and why is it important?", answer: "App Store Optimization (ASO) is the process of optimizing mobile apps to rank higher in app store search results, increasing visibility and organic downloads." },
-    { id: 2, question: "How do you improve app store rankings?", answer: "We optimize app titles, descriptions, keywords, screenshots, videos, ratings, and reviews to improve your app's visibility and conversion rate in app stores." }
-  ],
-  martech: [
-    { id: 1, question: "What martech tools do you use?", answer: "We work with a wide range of martech tools including CRM systems, marketing automation platforms, analytics tools, and more, selecting the best stack for your business needs." },
-    { id: 2, question: "Do you offer martech consulting?", answer: "Yes, we provide comprehensive martech consulting to help you select, implement, and optimize the right technology stack for your marketing goals." }
+  seo: [
+    {
+      id: 1,
+      question: "How long does it take to see results from SEO?",
+      answer: "SEO is a sustainable growth strategy. While initial technical and on-page improvements can show momentum in 60-90 days, significant rank and organic lead growth typically compound around 4-6 months."
+    },
+    {
+      id: 2,
+      question: "Do you offer Google AI Overview and LLM-optimized SEO?",
+      answer: "Yes! We structure content with schema markup, semantic search hierarchy, and strong E-E-A-T signals to help your brand get cited in Google AI Overviews and modern search results."
+    }
   ],
   process: [
-    { id: 1, question: "What is your onboarding process?", answer: "Our onboarding process includes discovery calls, goal setting, strategy development, and implementation planning to ensure a smooth start to our partnership." },
-    { id: 2, question: "How often do you report on performance?", answer: "We provide regular performance reports (weekly, bi-weekly, or monthly, depending on your preference) along with insights and recommendations for improvement." }
+    {
+      id: 1,
+      question: "How quickly can we launch our campaigns or web development project?",
+      answer: "Onboarding takes less than a week. Once access and brand assets are transferred, performance campaigns typically go live within 5–7 days, while custom web builds take between 2–6 weeks based on scope."
+    },
+    {
+      id: 2,
+      question: "How often will we receive performance reports?",
+      answer: "We provide live dashboard access alongside bi-weekly or monthly strategic reviews with your dedicated project manager to discuss metrics, learnings, and next steps."
+    }
   ]
 };
 
 export default function FAQ() {
-  const [activeCategory, setActiveCategory] = useState("seo");
+  const [activeCategory, setActiveCategory] = useState("performance");
   const [openQuestionId, setOpenQuestionId] = useState<number | null>(1);
-  const [categoryScrollIndex, setCategoryScrollIndex] = useState(0);
 
   const toggleQuestion = (id: number) => {
     setOpenQuestionId(openQuestionId === id ? null : id);
   };
 
-  const scrollCategories = (direction: "left" | "right") => {
-    const newIndex = direction === "left" 
-      ? Math.max(0, categoryScrollIndex - 1)
-      : Math.min(faqCategories.length - 5, categoryScrollIndex + 1);
-    setCategoryScrollIndex(newIndex);
-  };
-
-  const currentFAQs = faqData[activeCategory as keyof typeof faqData];
+  const currentFAQs = faqData[activeCategory as keyof typeof faqData] || [];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-sky-50 to-white">
+    <section className="py-16 px-4 bg-gradient-to-br from-slate-50 via-sky-50/50 to-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-10 font-heading">
-          Frequently Asked Questions
-        </h2>
-
-        {/* Category Tabs with Scroll */}
-        <div className="relative mb-10">
-          <button
-            onClick={() => scrollCategories("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-600 hover:text-[#006080] transition-colors"
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          <div className="overflow-hidden px-12">
-            <div 
-              className="flex gap-3 transition-transform duration-300"
-              style={{ transform: `translateX(-${categoryScrollIndex * 120}px)` }}
-            >
-              {faqCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-6 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                    activeCategory === category.id
-                      ? "bg-[#006080] text-white shadow-md"
-                      : "bg-white text-gray-700 border border-gray-200 hover:border-[#006080] hover:text-[#006080]"
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={() => scrollCategories("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-600 hover:text-[#006080] transition-colors"
-          >
-            <ChevronRight size={20} />
-          </button>
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-xs font-bold text-emerald-700 uppercase tracking-widest bg-emerald-100/60 px-3 py-1 rounded-full border border-emerald-200">
+            Got Questions?
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-gray-600 text-sm sm:text-base mt-2">
+            Everything you need to know about our Performance Marketing, Social Media, and Web Development services.
+          </p>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-5xl mx-auto">
-          {currentFAQs.map((faq) => (
-            <div key={faq.id} className="mb-4">
+        {/* Category Tabs */}
+        <div className="flex items-center justify-center mb-10">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none max-w-full px-2">
+            {faqCategories.map((category) => (
               <button
-                onClick={() => toggleQuestion(faq.id)}
-                className="w-full bg-white rounded-xl p-5 text-left shadow-sm hover:shadow-md transition-shadow flex items-center justify-between"
+                key={category.id}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  setOpenQuestionId(1); // Auto open first question on tab switch
+                }}
+                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 ${
+                  activeCategory === category.id
+                    ? "bg-gray-900 text-white shadow-md shadow-gray-900/10 scale-105"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-emerald-500 hover:text-emerald-700"
+                }`}
               >
-                <span className="font-semibold text-gray-800">
-                  {faq.question}
-                </span>
-                <div className="w-8 h-8 rounded-full border border-[#006080] text-[#006080] flex items-center justify-center">
-                  {openQuestionId === faq.id ? (
-                    <ChevronDown size={18} />
-                  ) : (
-                    <ChevronRight size={18} />
-                  )}
-                </div>
+                {category.name}
               </button>
-
-              {openQuestionId === faq.id && (
-                <div className="bg-sky-50 rounded-b-xl px-5 pb-5 pt-2 -mt-1">
-                  <p className="text-gray-700 leading-relaxed text-sm">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* FAQ Accordion List */}
+        <div className="max-w-4xl mx-auto space-y-3">
+          {currentFAQs.map((faq) => {
+            const isOpen = openQuestionId === faq.id;
+            return (
+              <div 
+                key={faq.id} 
+                className="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden transition-all duration-200"
+              >
+                <button
+                  onClick={() => toggleQuestion(faq.id)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50/50 transition-colors"
+                >
+                  <span className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                    {faq.question}
+                  </span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                    isOpen ? "bg-emerald-100 text-emerald-800 rotate-180" : "bg-gray-100 text-gray-500"
+                  }`}>
+                    <ChevronDown size={18} />
+                  </div>
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 text-gray-600 text-xs sm:text-sm leading-relaxed border-t border-gray-50">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ export default function Contact() {
             Let's Do Great Work Together
           </h2>
           <p className="text-gray-600 text-sm">
-            Get in touch with our SEO experts today
+            Get in touch with our marketing & development experts today
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function Contact() {
                       <Mail size={16} className="text-[#006080]" />
                       <span className="font-semibold">Email:</span>
                     </div>
-                    <p className="ml-6">enquiry@techmagnate.com</p>
+                    <p className="ml-6">enquiry@thevikslabs.com</p>
                   </div>
 
                   <div>
@@ -50,7 +50,7 @@ export default function Contact() {
                       <Phone size={16} className="text-[#006080]" />
                       <span className="font-semibold">Sales Enquiry:</span>
                     </div>
-                    <p className="ml-6">+91-9910308266</p>
+                    <p className="ml-6">+91-9389958986</p>
                   </div>
 
                   <div>
@@ -58,7 +58,7 @@ export default function Contact() {
                       <Phone size={16} className="text-[#006080]" />
                       <span className="font-semibold">HR:</span>
                     </div>
-                    <p className="ml-6">jobs@techmagnate.com</p>
+                    <p className="ml-6">jobs@thevikslabs.com</p>
                   </div>
                 </div>
 
@@ -103,14 +103,19 @@ export default function Contact() {
                     className="w-full px-4 py-3 rounded-xl border border-sky-200 bg-sky-50 focus:outline-none focus:ring-2 focus:ring-[#006080]/50 focus:border-transparent"
                   />
                 </div>
+                
+                {/* Updated Services Select Menu */}
                 <div>
-                  <select className="w-full px-4 py-3 rounded-xl border border-sky-200 bg-sky-50 focus:outline-none focus:ring-2 focus:ring-[#006080]/50 focus:border-transparent text-gray-600">
-                    <option>Choose Services</option>
-                    <option>SEO Services</option>
-                    <option>PPC Services</option>
-                    <option>Social Media Marketing</option>
-                    <option>Content Marketing</option>
-                    <option>ASO Services</option>
+                  <select 
+                    defaultValue="" 
+                    className="w-full px-4 py-3 rounded-xl border border-sky-200 bg-sky-50 focus:outline-none focus:ring-2 focus:ring-[#006080]/50 focus:border-transparent text-gray-700"
+                  >
+                    <option value="" disabled>Select a Service *</option>
+                    <option value="digital-marketing">Digital Marketing Strategy</option>
+                    <option value="performance-marketing">Performance Marketing (PPC & Meta Ads)</option>
+                    <option value="social-media-marketing">Social Media Marketing (SMM)</option>
+                    <option value="website-development">Website Development & UI/UX</option>
+                    <option value="full-funnel-growth">All-in-One Growth Package</option>
                   </select>
                 </div>
 
@@ -125,7 +130,7 @@ export default function Contact() {
                 <div className="md:col-span-2 flex items-center gap-2 mb-4">
                   <input type="checkbox" id="agree" className="w-4 h-4 text-[#006080]" />
                   <label htmlFor="agree" className="text-sm text-gray-600">
-                    By registering here, I agree to Techmagnate's Terms of Service and Privacy Policy
+                    By registering here, I agree to The Viklabs's Terms of Service and Privacy Policy
                   </label>
                 </div>
 

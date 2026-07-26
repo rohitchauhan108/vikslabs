@@ -17,9 +17,10 @@ import {
   Quote,
   Briefcase,
   GraduationCap,
-  Linkedin,
-  Twitter
 } from "lucide-react";
+
+
+import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export default function FounderPage() {
   return (

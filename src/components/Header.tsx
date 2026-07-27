@@ -31,50 +31,54 @@ const serviceCategories = [
   {
     id: "seo",
     title: "Search Engine Optimization",
+    href: "/services/seo",
     icon: Search,
     links: [
-      { name: "SEO Services", href: "/services/seo" },
-      { name: "Enterprise SEO", href: "/services/enterprise-seo" },
-      { name: "Ecommerce SEO", href: "/services/ecommerce-seo" },
-      { name: "Local SEO", href: "/services/local-seo" },
-      { name: "Technical SEO", href: "/services/technical-seo" },
-      { name: "SEO Audit", href: "/services/seo-audit" },
+      { name: "SEO Services" },
+      { name: "Enterprise SEO" },
+      { name: "Ecommerce SEO" },
+      { name: "Local SEO" },
+      { name: "Technical SEO" },
+      { name: "SEO Audit" },
     ],
   },
   {
     id: "smm",
     title: "Social Media Marketing",
+    href: "/services/social-media-marketing",
     icon: Share2,
     links: [
-      { name: "Social Media Strategy", href: "/services/social-media-strategy" },
-      { name: "Instagram & Meta Marketing", href: "/services/meta-marketing" },
-      { name: "Content & Reel Creation", href: "/services/content-creation" },
-      { name: "Community Management", href: "/services/community-management" },
-      { name: "Influencer Marketing", href: "/services/influencer-marketing" },
+      { name: "Social Media Strategy" },
+      { name: "Instagram & Meta Marketing" },
+      { name: "Content & Reel Creation" },
+      { name: "Community Management" },
+      { name: "Influencer Marketing" },
     ],
   },
   {
     id: "web-dev",
     title: "Web Development",
+    href: "/services/web-development",
     icon: Code,
     links: [
-      { name: "Custom Website Development", href: "/services/web-development" },
-      { name: "Next.js / React Apps", href: "/services/nextjs-development" },
-      { name: "WordPress Development", href: "/services/wordpress-development" },
-      { name: "E-commerce Stores", href: "/services/ecommerce-development" },
-      { name: "UI/UX & Web Design", href: "/services/ui-ux-design" },
+      { name: "Custom Website Development" },
+      { name: "Next.js / React Apps" },
+      { name: "WordPress Development" },
+      { name: "E-commerce Stores" },
+      { name: "UI/UX & Web Design" },
     ],
   },
   {
     id: "performance-marketing",
     title: "Performance Marketing",
+    href: "/services/performance-marketing",
     icon: TrendingUp,
     links: [
-      { name: "Google Ads (PPC)", href: "/services/google-ads" },
-      { name: "Meta Ads (Facebook & IG)", href: "/services/meta-ads" },
-      { name: "LinkedIn Marketing", href: "/services/linkedin-ads" },
-      { name: "Conversion Rate Optimization", href: "/services/cro" },
-      { name: "App Install Campaigns", href: "/services/app-installs" },
+      { name: "Google Ads (PPC)" },
+      { name: "Meta Ads (Facebook & IG)" },
+      { name: "LinkedIn Marketing" },
+      { name: "Conversion Rate Optimization" },
+      { name: "App Install Campaigns" },
     ],
   },
 ];
@@ -248,99 +252,99 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Our Services Mega Dropdown */}
-              <div className="group relative py-6">
-                <Link
-                  href="/services"
-                  className="hover:text-[#00a859] flex items-center gap-1 transition-colors"
-                >
-                  Our Services{" "}
-                  <ChevronDown
-                    size={14}
-                    className="text-slate-400 group-hover:rotate-180 transition-transform duration-200"
-                  />
-                </Link>
+{/* Our Services Mega Dropdown */}
+<div className="group relative py-6">
+  <Link
+    href="/services"
+    className="hover:text-[#00a859] flex items-center gap-1 transition-colors"
+  >
+    Our Services{" "}
+    <ChevronDown
+      size={14}
+      className="text-slate-400 group-hover:rotate-180 transition-transform duration-200"
+    />
+  </Link>
 
-                <div
-                  className="absolute top-full right-0 w-[820px] max-w-[calc(100vw-2rem)]
-                             bg-white border border-slate-200 shadow-2xl rounded-2xl
-                             opacity-0 invisible
-                             group-hover:opacity-100 group-hover:visible
-                             transition-all duration-200
-                             z-[60] p-5 overflow-hidden origin-top-right"
-                >
-                  <div className="flex gap-5">
-                    {/* Left Side: Service Category Tabs */}
-                    <div className="w-2/5 border-r border-slate-100 pr-4 flex flex-col gap-1.5">
-                      {serviceCategories.map((cat) => {
-                        const Icon = cat.icon;
-                        const isActive = activeTab === cat.id;
-                        return (
-                          <button
-                            key={cat.id}
-                            onMouseEnter={() => setActiveTab(cat.id)}
-                            className={`flex items-center gap-3 w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                              isActive
-                                ? "bg-emerald-50/80 text-[#00a859] shadow-sm border border-emerald-100"
-                                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                            }`}
-                          >
-                            <Icon
-                              size={16}
-                              className={`shrink-0 ${
-                                isActive ? "text-[#00a859]" : "text-slate-400"
-                              }`}
-                            />
-                            <span className="flex-1 leading-tight">{cat.title}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
+  <div
+    className="absolute top-full right-0 w-[820px] max-w-[calc(100vw-2rem)]
+               bg-white border border-slate-200 shadow-2xl rounded-2xl
+               opacity-0 invisible
+               group-hover:opacity-100 group-hover:visible
+               transition-all duration-200
+               z-[60] p-5 overflow-hidden origin-top-right"
+  >
+    <div className="flex gap-5">
+      {/* Left Side: Service Category Links (ACTIVE NAVIGABLE LINKS) */}
+      <div className="w-2/5 border-r border-slate-100 pr-4 flex flex-col gap-1.5">
+        {serviceCategories.map((cat) => {
+          const Icon = cat.icon;
+          const isActive = activeTab === cat.id;
+          return (
+            <Link
+              key={cat.id}
+              href={cat.href}
+              onMouseEnter={() => setActiveTab(cat.id)}
+              className={`flex items-center gap-3 w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                isActive
+                  ? "bg-emerald-50/80 text-[#00a859] shadow-sm border border-emerald-100"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+              }`}
+            >
+              <Icon
+                size={16}
+                className={`shrink-0 ${
+                  isActive ? "text-[#00a859]" : "text-slate-400"
+                }`}
+              />
+              <span className="flex-1 leading-tight">{cat.title}</span>
+            </Link>
+          );
+        })}
+      </div>
 
-                    {/* Right Side: Active Service Links */}
-                    <div className="w-3/5 bg-slate-50/60 p-5 rounded-xl border border-slate-100 flex flex-col justify-between min-h-[260px]">
-                      <div>
-                        <h3 className="text-sm font-extrabold text-slate-900 mb-3 pb-2 border-b border-slate-200 flex items-center gap-2">
-                          {(() => {
-                            const Icon = currentTabContent.icon;
-                            return (
-                              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00a859] to-emerald-700 flex items-center justify-center text-white shrink-0">
-                                <Icon size={15} />
-                              </span>
-                            );
-                          })()}
-                          {currentTabContent.title}
-                        </h3>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                          {currentTabContent.links.map((link, idx) => (
-                            <Link
-                              key={idx}
-                              href={link.href}
-                              className="text-xs text-slate-600 hover:text-[#00a859] hover:font-bold py-1.5 flex items-center gap-1.5 rounded-md hover:bg-white hover:px-1.5 -mx-1.5 transition-all"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#00a859] shrink-0" />
-                              {link.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* CTA Banner */}
-                      <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between gap-3">
-                        <span className="text-[11px] font-medium text-slate-500 leading-snug">
-                          Need custom digital strategies?
-                        </span>
-                        <Link
-                          href="/contact"
-                          className="shrink-0 text-[11px] font-extrabold text-white bg-gradient-to-r from-[#00a859] to-emerald-700 hover:from-emerald-700 hover:to-[#00a859] px-4 py-2 rounded-full flex items-center gap-1 shadow-sm transition-all"
-                        >
-                          Talk to Experts <ArrowRight size={12} />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {/* Right Side: Display List Items (NON-CLICKABLE VISUAL DISPLAY) */}
+      <div className="w-3/5 bg-slate-50/60 p-5 rounded-xl border border-slate-100 flex flex-col justify-between min-h-[260px]">
+        <div>
+          <h3 className="text-sm font-extrabold text-slate-900 mb-3 pb-2 border-b border-slate-200 flex items-center gap-2">
+            {(() => {
+              const Icon = currentTabContent.icon;
+              return (
+                <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00a859] to-emerald-700 flex items-center justify-center text-white shrink-0">
+                  <Icon size={15} />
+                </span>
+              );
+            })()}
+            {currentTabContent.title}
+          </h3>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+            {currentTabContent.links.map((link, idx) => (
+              <div
+                key={idx}
+                className="text-xs text-slate-600 py-1.5 flex items-center gap-1.5 cursor-default select-none"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00a859] shrink-0" />
+                {link.name}
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between gap-3">
+          <span className="text-[11px] font-medium text-slate-500 leading-snug">
+            Need custom digital strategies?
+          </span>
+          <Link
+            href="/contact"
+            className="shrink-0 text-[11px] font-extrabold text-white bg-gradient-to-r from-[#00a859] to-emerald-700 hover:from-emerald-700 hover:to-[#00a859] px-4 py-2 rounded-full flex items-center gap-1 shadow-sm transition-all"
+          >
+            Talk to Experts <ArrowRight size={12} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
               <Link
                 href="/blog"

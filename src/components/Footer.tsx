@@ -103,7 +103,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/smm" className={getLinkClasses("/services/smm")}>
+                  <Link href="/services/social-media-marketing" className={getLinkClasses("/services/smm")}>
                     Social Media Marketing
                   </Link>
                 </li>

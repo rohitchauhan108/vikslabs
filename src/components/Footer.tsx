@@ -103,7 +103,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/social-media-marketing" className={getLinkClasses("/services/smm")}>
+                  <Link href="/services/social-media-marketing" className={getLinkClasses("/services/social-media-marketing")}>
                     Social Media Marketing
                   </Link>
                 </li>
@@ -137,16 +137,6 @@ export default function Footer() {
                 <li>
                   <Link href="/founder" className={getLinkClasses("/founder")}>
                     About Founder
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/press" className={getLinkClasses("/press")}>
-                    Press Releases
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/careers" className={getLinkClasses("/careers")}>
-                    Careers
                   </Link>
                 </li>
               </ul>
@@ -184,23 +174,18 @@ export default function Footer() {
               <h3 className="font-bold text-base mb-5 text-gray-100">Quick Links</h3>
               <ul className="space-y-3 text-sm">
                 <li>
+                  <Link href="/" className={getLinkClasses("/")}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className={getLinkClasses("/services")}>
+                    All Services
+                  </Link>
+                </li>
+                <li>
                   <Link href="/blog" className={getLinkClasses("/blog")}>
                     Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faqs" className={getLinkClasses("/faqs")}>
-                    FAQs
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/case-studies" className={getLinkClasses("/case-studies")}>
-                    Case Studies
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/portfolio" className={getLinkClasses("/portfolio")}>
-                    Portfolio
                   </Link>
                 </li>
                 <li>

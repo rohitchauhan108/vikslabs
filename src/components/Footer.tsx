@@ -14,7 +14,7 @@ export default function Footer() {
 
   // Dynamic styling helper for footer nav links
   const getLinkClasses = (path: string) =>
-    `transition-colors duration-200 ${
+    `transition-colors duration-200 block ${
       isActive(path)
         ? "text-[#a3e635] font-semibold"
         : "text-gray-300 hover:text-[#a3e635]"
@@ -70,33 +70,39 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Footer Links & Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
             
-            {/* Logo & About */}
-            <div className="lg:col-span-2 pr-0 lg:pr-8">
-              <div className="mb-6">
+            {/* Logo & About Column (Spans 2 columns on lg) */}
+            <div className="sm:col-span-2 lg:col-span-2 pr-0 lg:pr-6">
+              <div className="mb-4">
                 <Link href="/" className="inline-block">
                   <Image
                     src="/logo.png"
                     alt="The Viks Labs Logo"
                     width={180}
                     height={50}
-                    className="h-20 w-auto object-contain brightness-0 invert"
+                    className="h-16 w-auto object-contain brightness-0 invert"
                   />
                 </Link>
                 <span className="text-[11px] tracking-[0.2em] text-[#a3e635] font-semibold block mt-2 uppercase">
                   Igniting Digital Domination
                 </span>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">
                 The Viks Labs is an award-winning performance marketing agency. We deliver transformational growth for our clients through digital &amp; AI domination.
               </p>
+              <div className="space-y-1 text-xs text-gray-400">
+                <p><span className="text-gray-200 font-semibold">Phone:</span> +91-9389958986</p>
+                <p><span className="text-gray-200 font-semibold">Email:</span> enquiry@thevikslabs.com</p>
+              </div>
             </div>
 
-            {/* Our Services */}
+            {/* Services Column (Only 4 core service pages) */}
             <div>
-              <h3 className="font-bold text-base mb-5 text-gray-100">Our Services</h3>
-              <ul className="space-y-3 text-sm">
+              <h3 className="font-bold text-sm mb-4 text-gray-100 uppercase tracking-wider">
+                Services
+              </h3>
+              <ul className="space-y-2.5 text-xs">
                 <li>
                   <Link href="/services/seo" className={getLinkClasses("/services/seo")}>
                     Search Engine Optimization
@@ -120,10 +126,12 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Company Column */}
             <div>
-              <h3 className="font-bold text-base mb-5 text-gray-100">Company</h3>
-              <ul className="space-y-3 text-sm">
+              <h3 className="font-bold text-sm mb-4 text-gray-100 uppercase tracking-wider">
+                Company
+              </h3>
+              <ul className="space-y-2.5 text-xs">
                 <li>
                   <Link href="/about" className={getLinkClasses("/about")}>
                     About Us
@@ -139,49 +147,25 @@ export default function Footer() {
                     About Founder
                   </Link>
                 </li>
-              </ul>
-            </div>
-
-            {/* Industries */}
-            <div>
-              <h3 className="font-bold text-base mb-5 text-gray-100">Industries</h3>
-              <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/industries/bfsi" className={getLinkClasses("/industries/bfsi")}>
-                    BFSI
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/b2b" className={getLinkClasses("/industries/b2b")}>
-                    B2B
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/education" className={getLinkClasses("/industries/education")}>
-                    Education
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/healthcare" className={getLinkClasses("/industries/healthcare")}>
-                    Healthcare
-                  </Link>
+               
                 </li>
               </ul>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Links Column */}
             <div>
-              <h3 className="font-bold text-base mb-5 text-gray-100">Quick Links</h3>
-              <ul className="space-y-3 text-sm">
+              <h3 className="font-bold text-sm mb-4 text-gray-100 uppercase tracking-wider">
+                Quick Links
+              </h3>
+              <ul className="space-y-2.5 text-xs">
                 <li>
                   <Link href="/" className={getLinkClasses("/")}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className={getLinkClasses("/services")}>
-                    All Services
-                  </Link>
+                 
                 </li>
                 <li>
                   <Link href="/blog" className={getLinkClasses("/blog")}>
@@ -203,6 +187,9 @@ export default function Footer() {
 
           {/* Social Links Row */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+            <div className="text-xs text-gray-400">
+              Connect with us on social media for growth updates &amp; case studies
+            </div>
             <div className="flex items-center gap-3">
               <a
                 href="https://facebook.com"
@@ -245,7 +232,7 @@ export default function Footer() {
 
           {/* Bottom Copyright and Legal Links */}
           <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
-            <p>Copyright &copy; 2026 The Viks Labs&reg;. All rights reserved.</p>
+            <p>Copyright &copy; {new Date().getFullYear()} The Viks Labs&reg;. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <Link href="/sitemap" className={getLinkClasses("/sitemap")}>
                 Sitemap
@@ -255,9 +242,7 @@ export default function Footer() {
                 Privacy Policy
               </Link>
               <span className="text-slate-700">|</span>
-              <Link href="/csr-policy" className={getLinkClasses("/csr-policy")}>
-                CSR Policy
-              </Link>
+              
             </div>
           </div>
 
